@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento de cursos - Escola TEC</title>
+    <link rel="stylesheet" href="estilo2.css">
+   
+</head>
+<body>
+    
+    <!-- Página de Login -->
+    <div id="login-page" class="login-page">
+        <h2>Login</h2>
+        <form id="login-form">
+            <label for="username">Usuário:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Entrar</button>
+        </form>
+        <p id="error-message" style="color: red;"></p>
+    </div>
+
+    <!-- Página de Agendamento (para o Professor) -->
+    <div id="schedule-page" class="schedule-page" style="display: none;">
+        <h2>Agendar Recurso</h2>
+        <form id="schedule-form">
+            <label for="room">Selecione a Sala:</label>
+            <select id="room">
+                <option value="1">Sala 1</option>
+                <option value="2">Sala 2</option>
+                <option value="3">Sala 3</option>
+                <option value="4">Sala 4</option>
+                <option value="5">Sala 5</option>
+                <option value="6">sala 6</option>
+                <option value="7">Sala 7</option>
+            </select>
+
+            <label for="start-time">Hora de Início:</label>
+            <input type="time" id="start-time" required>
+
+            <label for="end-time">Hora de Fim:</label>
+            <input type="time" id="end-time" required>
+
+            <label for="resources">Selecione os Recursos:</label>
+            <select id="resources" multiple>
+                <option value="chromebook">Chromebook</option>
+                <option value="ipad">iPad</option>
+                <option value="headphones">Fones de Ouvido</option>
+                <option value="headphones">Fones de Ouvido 2</option>
+                <option value="headphones">Fones de Ovuido 3</option>
+
+            </select>
+
+            <button type="submit">Agendar</button>
+        </form>
+        <div id="agendas"></div>
+    </div>
+
+    <!-- Página do Admin (somente para visualização dos agendamentos) -->
+    <div id="admin-page" class="admin-page" style="display: none;">
+        <h2>Painel de Adminiatrdor</h2>
+        <div id="agendas-admin">
+            <h3>Agendamentos do Dia</h3>
+            <div id="agendas"></div>
+        </div>
+    </div>
+
+    <script>
+        // Simulando usuários para login
+        const users = [
+            { username: 'professor1', password: 'senha1', role: 'user' },
+            { username: 'admin', password: 'admin', role: 'admin' }
+        ];
+
+        // Agendamentos
+        const schedules = [];
+
+        // Função para mostrar a página de agendamento
+        function showSchedulePage() {
+            document.getElementById('login-page').style.display = 'none';  // Esconde a página de login
+            document.getElementById('schedule-page').style.display = 'block';  // Exibe a página de agendamento
+        }
+
+        // Função para mostrar a página de admin
+        function showAdminPage() {
+            document.getElementById('login-page').style.display = 'none';  // Esconde a página de login
+            document.getElementById('admin-page').style.display = 'block';  // Exibe o painel de admin
+            renderAgendasForAdmin();  // Renderiza os agendamentos para o admin
+        }
+
+        // Função para renderizar agendamentos (visível para o admin)
+        function renderAgendasForAdmin() {
+            const agendasContainer = document.getElementById('agendas');
+            const today = new Date().toISOString().split('T')[0];  // Formato YYYY-MM-DD
+            const todaysSchedules = schedules.filter(schedule => schedule.date === today);
+
+            if (todaysSchedules.length === 0) {
+                agendasContainer.innerHTML = "<p>Não há agendamentos para hoje.</p>";
+            } else {
+                agendasContainer.innerHTML = `
+                    <table>
+                        <tr>
+                            <th>Sala</th>
+                            <th>Início</th>
+                            <th>Fim</th>
+                            <th>Recursos</th>
+                        </tr>
+                `;
+                todaysSchedules.forEach(schedule => {
+                    agendasContainer.innerHTML += `
+                        <tr>
+                            <td>${schedule.room}</td>
+                            <td>${schedule.startTime}</td>
+                            <td>${schedule.endTime}</td>
+                            <td>${schedule.resources.join(', ')}</td>
+                        </tr>
+                    `;
+                });
+                agendasContainer.innerHTML += '</table>';
+            }
+        }
+
+        // Função de login
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault();  // Evita que o formulário recarregue a página
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            const user = users.find(u => u.username === username && u.password === password);
+
+            if (user) {
+                if (user.role === 'admin') {
+                    showAdminPage();  // Mostra o painel de administração
+                } else {
+                    showSchedulePage();  // Mostra a página de agendamento para o professor
+                }
+            } else {
+                document.getElementById('error-message').textContent = 'Usuário ou senha inválidos.';
+            }
+        });
+
+        // Função de agendamento
+        document.getElementById('schedule-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const room = document.getElementById('room').value;
+            const startTime = document.getElementById('start-time').value;
+            const endTime = document.getElementById('end-time').value;
+            const resources = Array.from(document.getElementById('resources').selectedOptions).map(option => option.value);
+            const date = new Date().toISOString().split('T')[0]; // Pega a data atual (YYYY-MM-DD)
+
+            schedules.push({ room, startTime, endTime, resources, date });
+            alert('Recurso agendado com sucesso!');
+        });
+    </script>
+</body>
+</html>

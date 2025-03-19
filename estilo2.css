@@ -147,10 +147,12 @@ body {
     gap: 15px;
 }
 
-/* Agrupamento de Campos */
+/* campos de selecionar horario/recursos*/
 .form-group {
     display: flex;
     flex-direction: column;
+    gap: 5px;
+    margin-bottom: 10px;
 }
 
 /* Labels */
@@ -160,10 +162,10 @@ label {
     color: #002b5e;
 }
 
-/* Inputs e Seletores */
+/* tudo em volta dos selecionar */
 input, select {
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #740202;
     border-radius: 5px;
     font-size: 16px;
 }
@@ -185,11 +187,10 @@ select[multiple] {
     transition: background 0.3s;
 }
 
-/* animação agendar */
+/* animação botão agendar */
 .btn-primary:hover {
     background: #239248;
     transition: background 1.5s;
-   
 }
 
 /* Área de Agendamentos */

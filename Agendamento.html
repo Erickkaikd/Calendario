@@ -1,31 +1,34 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agendamento de cursos - Escola TEC</title>
+    <title>Login e Agendamento - Escola TEC</title>
     <link rel="stylesheet" href="estilo2.css">
-   <script src="script.js" defer></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
-    
     <!-- Página de Login -->
-    <div id="login-page" class="login-page">
-        <h2>Login</h2>
-        <form id="login-form">
-            <label for="username">Usuário:</label>
-            <input type="text" id="username" name="username" required>
-            <label for="password">Senha:</label>
-            <input type="password" id="password" name="password" required>
-            <button type="submit">Entrar</button>
-        </form>
-        <p id="error-message" style="color: red;"></p>
+    <div id="login-page" class="container">
+        <div class="Bem-vindo">
+            <h1>Bem-vindo!</h1>
+            <p>Preencha suas credenciais de login para continuar.</p>
+        </div>
+        <div class="login">
+            <h2>Área de Acesso</h2>
+            <form id="login-form">
+                <input type="text" id="username" name="username" placeholder="Usuário" required>
+                <input type="password" id="password" name="password" placeholder="Senha" required>
+                <button type="submit">Acessar</button>
+            </form>
+            <p id="error-message" style="color: red;"></p>
+        </div>
     </div>
 
     <!-- Página de Agendamento (para o Professor) -->
-    <div id="schedule-page" class="schedule-page" style="display: none;">
+    <div id="schedule-page" class="container" style="display: none;">
         <h2>Agendar Recurso</h2>
-        <form id="schedule-form">
+        <form id2="schedule-form">
             <label for="room">Selecione a Sala:</label>
             <select id="room">
                 <option value="1">Sala 1</option>
@@ -33,12 +36,10 @@
                 <option value="3">Sala 3</option>
                 <option value="4">Sala 4</option>
                 <option value="5">Sala 5</option>
-                <option value="6">sala 6</option>
+                <option value="6">Sala 6</option>
                 <option value="7">Sala 7</option>
             </select>
-<div>
-   <h3>Vai tomando de primeira deu certo no meu pc</h3>            
-</div>
+
             <label for="start-time">Hora de Início:</label>
             <input type="time" id="start-time" required>
 
@@ -50,9 +51,6 @@
                 <option value="chromebook">Chromebook</option>
                 <option value="ipad">iPad</option>
                 <option value="headphones">Fones de Ouvido</option>
-                <option value="headphones">Fones de Ouvido 2</option>
-                <option value="headphones">Fones de Ovuido 3</option>
-
             </select>
 
             <button type="submit">Agendar</button>
@@ -61,8 +59,8 @@
     </div>
 
     <!-- Página do Admin (somente para visualização dos agendamentos) -->
-    <div id="admin-page" class="admin-page" style="display: none;">
-        <h2>Painel de Adminiatrdor</h2>
+    <div id="admin-page" class="container" style="display: none;">
+        <h2>Painel de Administrador</h2>
         <div id="agendas-admin">
             <h3>Agendamentos do Dia</h3>
             <div id="agendas"></div>

@@ -28,7 +28,8 @@ body {
 }
 
 
-/* ==== PÁGINA DE LOGIN ==== */
+/* !!!! PÁGINA DE LOGIN !!!! */
+
 
 /* Seção de Boas-vindas (Lado Esquerdo) */
 .Bem-vindo {
@@ -95,7 +96,7 @@ body {
     font-size: 16px;
     margin-top: 140px;
 
-/*Animação login*/  
+/*Animação botão login*/  
 }
 .login button:hover {
     background: #0ebb90;
@@ -105,35 +106,97 @@ body {
 
 
 
-/* ==== PÁGINA DE AGENDAMENTO ==== */
+/* !!!!! PÁGINA DE AGENDAMENTO !!!!!*/
 
 
 
 
 /* Estilos para a página de agendamento */
-#schedule-page {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 30px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-#schedule-page h2 {
+body {
+    font-family: Arial, sans-serif;
+    background-color: #002b5e;
     color: #333;
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 25px;
-    font-family: Arial, Helvetica, sans-serif;     
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
+/* Container Principal */
+#schedule-page {
+    background: #f9f9f9;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    width: 100%;
+}
 
-/* Estilos para a visualização dos agendamentos */
+/* Cabeçalhos */
+#schedule-page h2 {
+    text-align: center;
+    color: #002b5e;
+}
+
+/* Formulários */
+#schedule-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Agrupamento de Campos */
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Labels */
+label {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #002b5e;
+}
+
+/* Inputs e Seletores */
+input, select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Rolagem de recursos */
+select[multiple] {
+    height: 80px;
+}
+
+/* Botão agendar */
+.btn-primary {
+    background: #007bff;
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+/* animação agendar */
+.btn-primary:hover {
+    background: #239248;
+    transition: background 1.5s;
+   
+}
+
+/* Área de Agendamentos */
 #agendas {
-    margin-top: 30px;
-    padding: 20px;
-    background-color: #331515;
-    border-radius: 8px;
+    margin-top: 20px;
+    padding: 15px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

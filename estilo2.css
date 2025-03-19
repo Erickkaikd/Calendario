@@ -90,6 +90,7 @@ body {
     background: #082d7c;
     color: white;
     padding: 10px;
+    width: 100%;
     border: none;
     border-radius: 40px;
     cursor: pointer;
